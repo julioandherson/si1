@@ -39,7 +39,15 @@ public class testeEscritaPorExtenso {
 	//CASO MAIS SIMPLES POSSIVEL
 	@Test
 	public void testPorExtenso(){
-	Assert.assertEquals("um", e.escreverPorExtenso(1)); 
+	Assert.assertEquals("um", e.escreverPorExtenso(1));
+	Assert.assertEquals("dois", e.escreverPorExtenso(2));
+	Assert.assertEquals("tres", e.escreverPorExtenso(3));
+	Assert.assertEquals("quatro", e.escreverPorExtenso(4));
+	Assert.assertEquals("cinco", e.escreverPorExtenso(5));
+	Assert.assertEquals("seis", e.escreverPorExtenso(6));
+	Assert.assertEquals("sete", e.escreverPorExtenso(7));
+	Assert.assertEquals("oito", e.escreverPorExtenso(8));
+	Assert.assertEquals("nove", e.escreverPorExtenso(9));
 	Assert.assertEquals("dez", e.escreverPorExtenso(10));
 	}
 	
