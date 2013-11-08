@@ -8,7 +8,7 @@ public enum ValoresNumericos {
 	QUINZE("quinze", 15), DEZESSEIS("dezesseis", 16), DEZESSETE("dezessete", 17), DEZOITO("dezoito", 18),
 	DEZENOVE("dezenove", 19), VINTE("vinte", 20), TRINTA("trinta", 30), QUARENTA("quarenta", 40),
 	CINQUENTA("cinquenta", 50), SESSENTA("sessenta", 60), SETENTA("setenta", 70), OITENTA("oitenta", 80),
-	NOVENTA("noventa", 90), CEM("cem", 100), MIL("mil", 1000);
+	NOVENTA("noventa", 90), CEM("cem", 100), MIL("mil", 1000), BILHAO("bilhao", 1000000000);
 	
 	private String valorExtenso;
 	private int valorNumerico;

@@ -63,18 +63,24 @@ public class testeEscritaPorExtenso {
 	//ENTRADA VAZIA
 	@Test
 	public void testEntradaVazia(){
-		Integer entradaVazia = null;
-		try{
-			e.escreverPorExtenso(entradaVazia);
-		}catch(Exception e){
-			System.out.println("Excessao entrada vazia");
-		}
+		String entrada = "";
+		Assert.assertFalse(e.isEntradaValida(entrada));
+		entrada = "                  ";
+		Assert.assertFalse(e.isEntradaValida(entrada));
+		Assert.assertFalse(e.isEntradaValida(null));
 	}
 	
 	//ENTRADA INVALIDA
 	@Test
 	public void testEntradaInvalida(){
+		String entrada = "entrada errada";
+		Assert.assertFalse(e.isEntradaValida(entrada));
+		Assert.assertFalse(e.isEntradaValida(null));
 		
+		entrada = "23abc";
+		Assert.assertFalse(e.isEntradaValida(entrada));
+		entrada = "23 ";
+		Assert.assertFalse(e.isEntradaValida(entrada));
 	}
 	
 	//NUMEROS ENTRE 21 E 99
