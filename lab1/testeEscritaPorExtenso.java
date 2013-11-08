@@ -63,7 +63,23 @@ public class testeEscritaPorExtenso {
 	//ENTRADA VAZIA
 	@Test
 	public void testEntradaVazia(){
+		Integer entradaVazia = null;
+		try{
+			e.escreverPorExtenso(entradaVazia);
+		}catch(Exception e){
+			System.out.println("Excessao entrada vazia");
+		}
+	}
+	
+	//ENTRADA INVALIDA
+	@Test
+	public void testEntradaInvalida(){
 		
 	}
-
+	
+	//NUMEROS ENTRE 21 E 99
+	@Test
+	public void testIntervalos(){
+		
+	}
 }
