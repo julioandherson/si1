@@ -57,7 +57,6 @@ public class testeEscritaPorExtenso {
 	Assert.assertEquals("oitenta", e.escreverPorExtenso(80));
 	Assert.assertEquals("noventa", e.escreverPorExtenso(90));
 	Assert.assertEquals("cem", e.escreverPorExtenso(100));
-	Assert.assertEquals("mil", e.escreverPorExtenso(1000));
 	}
 	
 	//ENTRADA VAZIA
@@ -88,7 +87,7 @@ public class testeEscritaPorExtenso {
 	
 	//NUMEROS ENTRE 21 E 99
 	@Test
-	public void testIntervalos21A99(){
+	public void testIntervalos21A100(){
 		Assert.assertEquals("vinte e dois", e.escreverPorExtenso(22));
 		Assert.assertEquals("vinte e tres", e.escreverPorExtenso(23));
 		Assert.assertEquals("vinte e quatro", e.escreverPorExtenso(24));
@@ -111,5 +110,14 @@ public class testeEscritaPorExtenso {
 		Assert.assertEquals("oitenta e seis", e.escreverPorExtenso(86));
 		Assert.assertEquals("noventa e dois", e.escreverPorExtenso(92));
 		Assert.assertEquals("noventa e nove", e.escreverPorExtenso(99));
+		Assert.assertEquals("cem", e.escreverPorExtenso(100));
+	}
+	
+	@Test
+	public void testIntervalos101A999(){
+		Assert.assertEquals("cento e um", e.escreverPorExtenso(101));
+		Assert.assertEquals("cento e seis", e.escreverPorExtenso(106));
+		Assert.assertEquals("cento e quarenta e seis", e.escreverPorExtenso(146));
+
 	}
 }
