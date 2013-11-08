@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 
 public enum ValoresNumericos {
@@ -31,11 +30,8 @@ public enum ValoresNumericos {
 		//System.out.println(ZERO.getValorExtenso());
 		//ValoresNumericos e = null;
 		//System.out.println(e.values()[2].getValorExtenso());
-		EscrevePorExtenso s = new EscrevePorExtenso();
-		Scanner n = new Scanner(System.in);
+		//EscrevePorExtenso s = new EscrevePorExtenso();
+		//Scanner n = new Scanner(System.in);
 		
 	}
-	
-	
-
 }
