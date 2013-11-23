@@ -28,13 +28,5 @@ public class Task extends Model {
 
     public static void delete(Long id) {
     	find.ref(id).delete();
-    }
-        
-    public String getLabel() {
-        return label;
-    }
-    
-    public Long getId(){
-    	return id;
-    }
+    }        
 }
