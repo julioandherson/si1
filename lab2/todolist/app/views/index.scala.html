@@ -5,7 +5,7 @@
 @main("Lista de Tarefas") {
     
     
-    <h2>Adicionar uma nova tarefa</h2>
+    <h0>Adicionar uma nova tarefa</h0>
     
     @form(routes.Application.newTask()) {
         
@@ -22,7 +22,7 @@
     
     <ul>
         @for(task <- tarefasFeitas) {
-            <li>
+            <li1>
                 Projeto: @task.getProject() <br>
                 Descrição: @task.getDescription() <br>
                 Prioridade: @task.getPriority() <br>
@@ -31,17 +31,17 @@
                 @form(routes.Application.deleteTask(task.getId())) {
                     <input type="submit" value="Apagar tarefa">
                 }
-            </li>
+            </li1>
         }
     </ul>
     
     
     
-        <h1>@tarefasNaoFeitas.size() tarefa(s) não feita(s)</h1>
+        <h2>@tarefasNaoFeitas.size() tarefa(s) não feita(s)</h2>
     
     <ul>
         @for(task <- tarefasNaoFeitas) {
-            <li>
+            <li2>
                 Projeto: @task.getProject() <br>
                 Descrição: @task.getDescription() <br>
                 Prioridade: @task.getPriority() <br>
@@ -50,7 +50,7 @@
                 @form(routes.Application.deleteTask(task.getId())) {
                     <input type="submit" value="Apagar tarefa">
                 }
-            </li>
+            </li2>
         }
     </ul>
     
