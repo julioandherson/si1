@@ -1,13 +1,13 @@
-@(tasks: List[Task], taskForm: Form[Task])
+@(tasksDone: List[Task], tasksNotDone: List[Task], taskForm: Form[Task])
 
 @import helper._
 
 @main("Lista de Tarefas") {
     
-    <h1>@tasks.size() tarefa(s)</h1>
+    <h1>@tasksDone.size() tarefa(s) feita(s)</h1>
     
     <ul>
-        @for(task <- tasks) {
+        @for(task <- tasksDone) {
             <li>
                 Projeto: @task.getProject() <br>
                 Descrição: @task.getDescription() <br>
@@ -21,19 +21,41 @@
         }
     </ul>
     
+    
+    
+        <h1>@tasksNotDone.size() tarefa(s) não feita(s)</h1>
+    
+    <ul>
+        @for(task <- tasksNotDone) {
+            <li>
+                Projeto: @task.getProject() <br>
+                Descrição: @task.getDescription() <br>
+                Prioridade: @task.getPriority() <br>
+                Situação: @task.getSituation() <br>
+                
+                @form(routes.Application.deleteTask(task.id)) {
+                    <input type="submit" value="Deletar">
+                }
+            </li>
+        }
+    </ul>
+    
+    
+    
+    
     <h2>Adicionar uma nova tarefa</h2>
     
     @form(routes.Application.newTask()) {
         
-        Projeto: <input type="text" name="project"> <br>
-        Descrição: <input type="text" name="description"> <br>
-        Prioridade: <input type="number" name="priority"> <br>
+        Projeto: <input type="text" name="project" title="Escolha o nome do projeto"> <br>
+        Descrição: <input type="text" name="description" title="Escolha a descrição da tarefa"> <br>
+        Prioridade: <input type="number" name="priority" title="Escolha o valor da prioridade" > <br>
         
-        <input type="checkbox" name="situation" value="Feito">Tarefa feita<br>
-		<input type="checkbox" name="situation" value="A Fazer">Tarefa à fazer
+        Feito: <input type="checkbox" name="situation" title="Marque se a tarefa foi realizada."
+        	   <input type="hidden" name="situation" value="Feito"> 
+                       
         
-        
-        <input type="submit" value="Criar">
+       		   <input type="submit" value="Criar">
         
     }
     

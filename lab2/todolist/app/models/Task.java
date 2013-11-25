@@ -23,7 +23,7 @@ public class Task extends Model {
     public int priority;
     
     @Required
-    public String situation;
+    public String situation = "Não feito";
     
     public static Finder<Long,Task> find = new Finder(Long.class, Task.class);
     
@@ -38,6 +38,7 @@ public class Task extends Model {
     public static void delete(Long id) {
     	find.ref(id).delete();
     }
+    
     
     public Long getId(){
     	return this.id;
