@@ -8,7 +8,7 @@ import play.data.validation.Constraints.*;
 import javax.persistence.*;
 
 @Entity
-public class Task extends Model{
+public class Task extends Model implements Comparable<Task>{
 		
 	@Id
     public Long id;
@@ -58,4 +58,10 @@ public class Task extends Model{
     public String getSituation(){
     	return this.situation;
     }
+
+	@Override
+	public int compareTo(Task tarefa) {
+		int result = tarefa.getPriority() - this.getPriority();
+		return result;
+	}
 }

@@ -19,8 +19,8 @@ public class Application extends Controller {
     public static Result tasks() {
     	List<Task> done = new ArrayList<Task>();
     	List<Task> notDone = new ArrayList<Task>();
-    	
-    	for(Task task : Task.all()){
+    	List<Task> all = ordenaPorPrioridade(Task.all());
+    	for(Task task : all){
     		if(task.situation.equals(FEITO)){
     			done.add(task);
     		}else{
@@ -35,7 +35,8 @@ public class Application extends Controller {
         if (filledForm.hasErrors()) {
         	List<Task> done = new ArrayList<Task>();
             List<Task> notDone = new ArrayList<Task>();
-            for (Task task: Task.all()){
+            List<Task> all = ordenaPorPrioridade(Task.all());
+            for (Task task: all){
             	if (task.situation.equals(FEITO)){
             		done.add(task);
             	} else {
@@ -47,6 +48,13 @@ public class Application extends Controller {
         	Task.create(filledForm.get());
             return redirect(routes.Application.tasks());
         }
+    }
+    
+    public static List<Task> ordenaPorPrioridade(List<Task> listaTarefas){
+    	List<Task> lista = listaTarefas;
+    	Collections.sort(lista);
+    	Collections.reverse(lista);
+    	return lista;
     }
     
     public static Result deleteTask(Long id){
