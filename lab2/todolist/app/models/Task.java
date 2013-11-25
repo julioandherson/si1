@@ -8,7 +8,7 @@ import play.data.validation.Constraints.*;
 import javax.persistence.*;
 
 @Entity
-public class Task extends Model {
+public class Task extends Model{
 		
 	@Id
     public Long id;
@@ -39,17 +39,12 @@ public class Task extends Model {
     	find.ref(id).delete();
     }
     
-    
     public Long getId(){
     	return this.id;
     }
     
     public String getProject(){
     	return this.project;
-    }
-    
-    public void setProject(String project){
-    	this.project = project;
     }
     
     public String getDescription(){
