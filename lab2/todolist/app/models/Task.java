@@ -7,80 +7,143 @@ import play.data.validation.Constraints.*;
 
 import javax.persistence.*;
 
+/**
+ * Classe que cria tarefas
+ * atributos: id, project, description, priority, situation, FEITO
+ * @author
+ *
+ */
 @Entity
 public class Task extends Model implements Comparable<Task>{
 		
 	@Id
-    public Long id;
+    private Long id;
     
     @Required
-    public String project;
+    private String project;
     
     @Required
-    public String description;
+    private String description;
     
     @Required
-    public int priority;
+    private int priority;
     
     @Required
-    public String situation = "Não feito";
+    private String situation = "Não feito";
     
+    @Required
     static String FEITO = "Feito";
     
     public static Finder<Long,Task> find = new Finder(Long.class, Task.class);
     
+    /**
+     * 
+     * @return lista de todas as tarefas criadas
+     */
     public static List<Task> all() {
     	return find.all();
     }
 
+    /**
+     * salva uma tarefa
+     * @param task
+     */
     public static void create(Task task) {
     	task.save();
     }
 
+    /**
+     * delelta uma tarefa que teve sua id passada por parametro
+     * @param id
+     */
     public static void delete(Long id) {
     	find.ref(id).delete();
     }
     
+    /**
+     * 
+     * @return id da tarefa
+     */
     public Long getId(){
     	return this.id;
     }
     
+    /**
+     * altera a id da tarefa
+     * @param id
+     */
     public void setId(Long id){
     	this.id = id;
     }
     
+    /**
+     * 
+     * @return project da tarefa
+     */
     public String getProject(){
     	return this.project;
     }
     
+    /**
+     * altera o project da tarefa
+     * @param project
+     */
     public void setProject(String project){
     	this.project = project;
     }
     
+    /**
+     * 
+     * @return description da tarefa
+     */
     public String getDescription(){
     	return this.description;
     }
     
+    /**
+     * altera descricao da tarefa
+     * @param description
+     */
     public void setDescription(String description){
     	this.description = description;
     }
     
+    /**
+     * 
+     * @return priority da tarefa
+     */
     public int getPriority(){
     	return this.priority;
     }
     
+    /**
+     * altera prioridade da tarefa
+     * @param priority
+     */
     public void setPriority(int priority){
     	this.priority = priority;
     }
     
+    /**
+     * 
+     * @return situation da tarefa
+     */
     public String getSituation(){
     	return this.situation;
     }
     
+    /**
+     * altera a situacao da tarefa
+     * @param situation
+     */
     public void setSituation(String situation){
     	this.situation = situation;
     }
 
+    /**
+     * atualiza a situacao de nao feita para feita
+     * @param id da tarefa a ser atualizada
+     */
     public static void updateSituation(Long id){
     	Task taskAux = new Task();
     	Task task = find.ref(id);
@@ -96,6 +159,9 @@ public class Task extends Model implements Comparable<Task>{
     	taskAux.save();
     }
     
+    /**
+     * compara a prioridade de duas tarefas
+     */
 	@Override
 	public int compareTo(Task tarefa) {
 		int result = tarefa.getPriority() - this.getPriority();
