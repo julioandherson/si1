@@ -1,8 +1,8 @@
 # Default messages
 
 # --- Constraints
-constraint.required=Obrigatorio
+constraint.required=Obrigat√≥rio
 
 # --- Errors
-error.required=Este campo È obrigatorio
-error.invalid=Valor inv·lido
+error.required=Este campo √© obrigatorio
+error.invalid=Valor inv√°lido

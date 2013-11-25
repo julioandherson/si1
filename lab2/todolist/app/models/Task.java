@@ -4,20 +4,27 @@ import java.util.*;
 
 import play.db.ebean.*;
 import play.data.validation.Constraints.*;
-import play.i18n.Messages;
 
 import javax.persistence.*;
 
 @Entity
 public class Task extends Model {
-	
-	
+		
 	@Id
     public Long id;
-
+    
     @Required
-    public String label;
-
+    public String project;
+    
+    @Required
+    public String description;
+    
+    @Required
+    public int priority;
+    
+    @Required
+    public String situation;
+    
     public static Finder<Long,Task> find = new Finder(Long.class, Task.class);
     
     public static List<Task> all() {
@@ -36,7 +43,23 @@ public class Task extends Model {
     	return this.id;
     }
     
-    public String getLabel(){
-    	return this.label;
+    public String getProject(){
+    	return this.project;
+    }
+    
+    public void setProject(String project){
+    	this.project = project;
+    }
+    
+    public String getDescription(){
+    	return this.description;
+    }
+    
+    public int getPriority(){
+    	return this.priority;
+    }
+    
+    public String getSituation(){
+    	return this.situation;
     }
 }
