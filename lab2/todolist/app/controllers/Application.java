@@ -57,6 +57,11 @@ public class Application extends Controller {
     	return lista;
     }
     
+    public static Result updateTask(Long id){
+    	Task.updateSituation(id);
+    	return redirect(routes.Application.tasks());
+    }
+    
     public static Result deleteTask(Long id){
     	Task.delete(id);
     	return redirect(routes.Application.tasks());
