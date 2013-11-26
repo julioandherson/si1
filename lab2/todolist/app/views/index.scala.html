@@ -2,61 +2,90 @@
 
 @import helper._
 
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
 @main("Lista de Tarefas") {
+    <div class = "container">
     
     
-    <h0>Adicionar uma nova tarefa</h0>
+    <div class="panel panel-warning">
+    	<div class="panel-heading">
+    		<h1>Adicionar uma nova tarefa</h1>
+    	</div>
+    
+    
     
     @form(routes.Application.newTask()) {
+        <div class= "input-group">
+        	<span class="input-group-addon">Projeto:</span>
+        	<input type="text" class="form-control" name="project" title="Escolha o nome do projeto"> <br>
+        </div>
         
-        Projeto:   <input type="text" name="project" title="Escolha o nome do projeto"> <br>
-        Descrição: <input type="text" name="description" title="Escolha a descrição da tarefa"> <br>
-        Prioridade: <input type="number" name="priority" title="Escolha o valor da prioridade"> <br>
-        Feito: <input type="checkbox" name="situation" title="Marque se a tarefa foi realizada."
-        	   <input type="hidden" name="situation" value="Feito">
-       		   <input type="submit" value="Criar tarefa">
+        
+        <div class= "input-group">
+        	<span class="input-group-addon">Descrição:</span>
+        	<input type="text" class="form-control" name="description" title="Escolha a descrição da tarefa."> <br>
+        </div>
+        
+        <div class= "input-group">
+        	<span class="input-group-addon">Prioridade:</span>
+       		<input type="number"  name="priority" title="Escolha o valor da prioridade"> <br>
+        </div>       
+        
+        <div class= "input-group">
+        	<span class="input-group-addon">Feito</span>
+        	<input type="checkbox" name="situation" title="Marque se a tarefa foi realizada"
+        	<input type="hidden" name="situation" value="Feito">      		
+       	</div>
+       		<input type="submit" value="Criar tarefa" class="btn btn-success btn-sm" title="Clique para criar a tarefa">
     }
+    </div>
     
     
-    <h1>@tarefasFeitas.size() tarefa(s) feita(s)</h1>
-    
-    <ul>
-        @for(task <- tarefasFeitas) {
-            <li1>
-                Projeto: @task.getProject() <br>
-                Descrição: @task.getDescription() <br>
-                Prioridade: @task.getPriority() <br>
-                Situação: @task.getSituation() <br>
-                
-                @form(routes.Application.deleteTask(task.getId())) {
-                    <input type="submit" value="Apagar tarefa">
-                }
-            </li1>
-        }
-    </ul>
-    
-    
-    
-        <h2>@tarefasNaoFeitas.size() tarefa(s) não feita(s)</h2>
-    
-    <ul>
-        @for(task <- tarefasNaoFeitas) {
-            <li2>
-                Projeto: @task.getProject() <br>
-                Descrição: @task.getDescription() <br>
-                Prioridade: @task.getPriority() <br>
-                Situação: @task.getSituation() <br>
-                
-                @form(routes.Application.deleteTask(task.getId())) {
-                    <input type="submit" value="Apagar tarefa">
-                }
-            </li2>
-            
-                @form(routes.Application.updateTask(task.getId())) {
-                	<input type="submit" name="situation"  value="Feito">
-                }
-        }
-    </ul>
-    
+    <div class="panel panel-success">
+   		<div class="panel-heading">
+   			<h2>@tarefasFeitas.size() tarefa(s) feita(s)</h2>
+   		</div>
 
+        @for(task <- tarefasFeitas) {
+            
+                <b>Projeto:</b> <i> @task.getProject() </i> <br>
+                <b>Descrição:</b> <i> @task.getDescription() </i> <br>
+                <b>Prioridade:</b> <i> @task.getPriority() </i> <br>
+                <b>Situação:</b> <i> @task.getSituation() </i> <br>
+                
+                @form(routes.Application.deleteTask(task.getId())) {
+                    <input type="submit" class="btn btn-danger btn-sm" value="Apagar tarefa">
+                }   
+        }
+  
+	 </div>
+    
+    	<div class="panel panel-danger">
+   		<div class="panel-heading">
+        	<h2>@tarefasNaoFeitas.size() tarefa(s) não feita(s)</h2>
+        </div>
+    
+    	
+        @for(task <- tarefasNaoFeitas) {
+            
+                <b>Projeto:</b> <i>@task.getProject() </i><br>
+                <b>Descrição:</b> <i>@task.getDescription() </i><br>
+                <b>Prioridade:</b> <i>@task.getPriority() </i><br>
+                <b>Situação:</b> <i>@task.getSituation() </i><br>
+                
+                <table>
+                @form(routes.Application.deleteTask(task.getId())) {
+                    <input type="submit" class="btn btn-danger btn-sm" value="Apagar tarefa">
+                }
+            
+            	
+                @form(routes.Application.updateTask(task.getId())) {
+                	<input type="submit" name="situation" class="btn btn-success btn-sm" value="Feito">
+                }
+                </table>
+                
+        }
+    </div>
 }
+</div>
